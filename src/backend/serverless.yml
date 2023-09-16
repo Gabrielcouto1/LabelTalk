@@ -41,3 +41,10 @@ functions:
       - httpApi:
           path: /labels
           method: post
+  get_text:
+    handler: routes.get_text.handler
+    events:
+      - httpApi:
+          path: /text
+          method: post
+
