@@ -35,3 +35,9 @@ functions:
       - httpApi:
           path: /
           method: get
+  get_labels:
+    handler: routes.get_labels.handler
+    events:
+      - httpApi:
+          path: /labels
+          method: post

@@ -77,6 +77,12 @@
         "LogGroupName": "/aws/lambda/label-talk-backend-dev-health"
       }
     },
+    "GetUnderscorelabelsLogGroup": {
+      "Type": "AWS::Logs::LogGroup",
+      "Properties": {
+        "LogGroupName": "/aws/lambda/label-talk-backend-dev-get_labels"
+      }
+    },
     "IamRoleLambdaExecution": {
       "Type": "AWS::IAM::Role",
       "Properties": {
@@ -174,7 +180,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1694825545125-2023-09-16T00:52:25.125Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1694827059387-2023-09-16T01:17:39.387Z/label-talk-backend.zip"
         },
         "Handler": "routes.health.handler",
         "Runtime": "python3.11",
@@ -198,14 +204,55 @@
         "HealthLogGroup"
       ]
     },
-    "HealthLambdaVersionmMlkLjDbkwNSPtNTt0zQ4WqT0yoIfYPkd3TE8PbzEg": {
+    "GetUnderscorelabelsLambdaFunction": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "Code": {
+          "S3Bucket": {
+            "Ref": "ServerlessDeploymentBucket"
+          },
+          "S3Key": "serverless/label-talk-backend/dev/1694827059387-2023-09-16T01:17:39.387Z/label-talk-backend.zip"
+        },
+        "Handler": "routes.get_labels.handler",
+        "Runtime": "python3.11",
+        "FunctionName": "label-talk-backend-dev-get_labels",
+        "MemorySize": 1024,
+        "Timeout": 6,
+        "Environment": {
+          "Variables": {
+            "REGION": "us-east-1",
+            "BUCKET_NAME": "label-talk-bucket"
+          }
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "IamRoleLambdaExecution",
+            "Arn"
+          ]
+        }
+      },
+      "DependsOn": [
+        "GetUnderscorelabelsLogGroup"
+      ]
+    },
+    "HealthLambdaVersionRKcahXo5cj4s8JtqXGESyBc2LG355El4X7JDDsgBQ": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HealthLambdaFunction"
         },
-        "CodeSha256": "UgNBy9Dq2/Wkx6v9gOOj493ARbN3xg2Olzdi/Fo+bM8="
+        "CodeSha256": "mYAtPZ7c0PN+/gpNzjCl0XZU5eACnsUiFxS259mCRso="
+      }
+    },
+    "GetUnderscorelabelsLambdaVersionNd6rJKBetgpn3KfJBKSYiqtKI3jg8ibmg8ZcwKVFsns": {
+      "Type": "AWS::Lambda::Version",
+      "DeletionPolicy": "Retain",
+      "Properties": {
+        "FunctionName": {
+          "Ref": "GetUnderscorelabelsLambdaFunction"
+        },
+        "CodeSha256": "mYAtPZ7c0PN+/gpNzjCl0XZU5eACnsUiFxS259mCRso="
       }
     },
     "HttpApi": {
@@ -302,6 +349,81 @@
         }
       },
       "DependsOn": "HttpApiIntegrationHealth"
+    },
+    "GetUnderscorelabelsLambdaPermissionHttpApi": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "FunctionName": {
+          "Fn::GetAtt": [
+            "GetUnderscorelabelsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "Action": "lambda:InvokeFunction",
+        "Principal": "apigateway.amazonaws.com",
+        "SourceArn": {
+          "Fn::Join": [
+            "",
+            [
+              "arn:",
+              {
+                "Ref": "AWS::Partition"
+              },
+              ":execute-api:",
+              {
+                "Ref": "AWS::Region"
+              },
+              ":",
+              {
+                "Ref": "AWS::AccountId"
+              },
+              ":",
+              {
+                "Ref": "HttpApi"
+              },
+              "/*"
+            ]
+          ]
+        }
+      }
+    },
+    "HttpApiIntegrationGetUnderscorelabels": {
+      "Type": "AWS::ApiGatewayV2::Integration",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "IntegrationType": "AWS_PROXY",
+        "IntegrationUri": {
+          "Fn::GetAtt": [
+            "GetUnderscorelabelsLambdaFunction",
+            "Arn"
+          ]
+        },
+        "PayloadFormatVersion": "2.0",
+        "TimeoutInMillis": 30000
+      }
+    },
+    "HttpApiRoutePostLabels": {
+      "Type": "AWS::ApiGatewayV2::Route",
+      "Properties": {
+        "ApiId": {
+          "Ref": "HttpApi"
+        },
+        "RouteKey": "POST /labels",
+        "Target": {
+          "Fn::Join": [
+            "/",
+            [
+              "integrations",
+              {
+                "Ref": "HttpApiIntegrationGetUnderscorelabels"
+              }
+            ]
+          ]
+        }
+      },
+      "DependsOn": "HttpApiIntegrationGetUnderscorelabels"
     }
   },
   "Outputs": {
@@ -316,10 +438,19 @@
     "HealthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HealthLambdaVersionmMlkLjDbkwNSPtNTt0zQ4WqT0yoIfYPkd3TE8PbzEg"
+        "Ref": "HealthLambdaVersionRKcahXo5cj4s8JtqXGESyBc2LG355El4X7JDDsgBQ"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-HealthLambdaFunctionQualifiedArn"
+      }
+    },
+    "GetUnderscorelabelsLambdaFunctionQualifiedArn": {
+      "Description": "Current Lambda function version",
+      "Value": {
+        "Ref": "GetUnderscorelabelsLambdaVersionNd6rJKBetgpn3KfJBKSYiqtKI3jg8ibmg8ZcwKVFsns"
+      },
+      "Export": {
+        "Name": "sls-label-talk-backend-dev-GetUnderscorelabelsLambdaFunctionQualifiedArn"
       }
     },
     "HttpApiId": {
