@@ -1,0 +1,37 @@
+service: label-talk-backend
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.11
+  environment:
+    REGION: 'us-east-1'
+    BUCKET_NAME: 'label-talk-bucket' 
+
+  iam:
+    role: 
+      name: label-talk-role
+      statements:
+        - Effect: 'Allow'
+          Resource: '*'
+          Action: 
+          - 'lambda:FullAccess'
+          - 'lambda:InvokeFunction'
+        - Effect: 'Allow'
+          Action: 
+            - 'rekognition:*'
+          Resource: '*'
+        - Effect: Allow
+          Action: 
+            - 's3:GetObject' 
+            - 's3:PutObject'
+            - 's3:PutObjectAcl'
+          Resource: '*'
+
+functions:
+  health:
+    handler: routes.health.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
