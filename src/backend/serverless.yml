@@ -11,7 +11,8 @@ provider:
     BUCKET_NAME: ${env:BUCKET_NAME}
     OPEN_AI_KEY: ${env:OPEN_AI_KEY} 
     INSTA_PROMPT: ${env:INSTA_PROMPT}
-
+    BOOK_PROMPT: ${env:BOOK_PROMPT}
+    
   iam:
     role: 
       name: label-talk-role
@@ -40,20 +41,6 @@ functions:
           path: /
           method: get
 
-  get_labels:
-    handler: routes.get_labels.handler
-    events:
-      - httpApi:
-          path: /labels
-          method: post
-
-  get_text:
-    handler: routes.get_text.handler
-    events:
-      - httpApi:
-          path: /text
-          method: post
-
   instagram_caption:
     handler: routes.instagram_caption.handler
     layers:
@@ -61,5 +48,14 @@ functions:
     events: 
       - httpApi:
           path: /insta
+          method: post
+
+  book_summary:
+    handler: routes.book_summary.handler
+    layers:
+      - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+    events: 
+      - httpApi:
+          path: /book
           method: post
 
