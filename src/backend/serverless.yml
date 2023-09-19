@@ -1,12 +1,16 @@
 service: label-talk-backend
 frameworkVersion: '3'
 
+useDotenv: true
+
 provider:
   name: aws
   runtime: python3.11
   environment:
     REGION: 'us-east-1'
-    BUCKET_NAME: 'label-talk-bucket' 
+    BUCKET_NAME: ${env:BUCKET_NAME}
+    OPEN_AI_KEY: ${env:OPEN_AI_KEY} 
+    INSTA_PROMPT: ${env:INSTA_PROMPT}
 
   iam:
     role: 
@@ -35,16 +39,27 @@ functions:
       - httpApi:
           path: /
           method: get
+
   get_labels:
     handler: routes.get_labels.handler
     events:
       - httpApi:
           path: /labels
           method: post
+
   get_text:
     handler: routes.get_text.handler
     events:
       - httpApi:
           path: /text
+          method: post
+
+  instagram_caption:
+    handler: routes.instagram_caption.handler
+    layers:
+      - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+    events: 
+      - httpApi:
+          path: /insta
           method: post
 
