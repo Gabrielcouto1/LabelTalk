@@ -9,9 +9,9 @@ def handler(event, context):
     try:
         image_name    = json_body['image_name']
         adjective     = json_body['adjective']
-        endpoint_type = json_body['endpoint_type']
 
         max_labels    = 10
+        endpoint_type = 'INSTA_PROMPT'
         bucket_name   = os.environ['BUCKET_NAME'] 
     except:
         return {"statusCode": 500,

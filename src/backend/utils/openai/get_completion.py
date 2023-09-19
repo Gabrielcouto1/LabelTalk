@@ -3,15 +3,16 @@ import os
 
 api_key = os.environ['OPEN_AI_KEY']
 
-def get_completion(endpoint_type, labelsList, adjective):
+def get_completion(endpoint_type, list, adjective):
     url = "https://api.openai.com/v1/engines/davinci/completions"
 
     prompt = os.environ[endpoint_type]
-
-    for label in labelsList:
-        prompt += label +', '
+    print(list)
+    for item in list:
+        prompt += item +', '
     
-    prompt += "Subtitle Adjective: "+ adjective
+    if adjective:
+        prompt += "Subtitle Adjective: "+ adjective
 
     # Dados da solicitação
     data = {
