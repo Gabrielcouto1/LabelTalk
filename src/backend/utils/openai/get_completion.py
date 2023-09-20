@@ -27,10 +27,7 @@ def get_completion(endpoint_type, list, adjective):
 
     if response.status_code == 200:
         result = response.json()
-        return {
-                "statusCode":200,
-                "headers": {"Content-Type": "application/json"},
-                "body": json.dumps({"GPT_response": result["choices"][0]["message"]["content"]})
-               }
+        return result["choices"][0]["message"]["content"]
+    
     else:
         return f"Error: {response.status_code}"

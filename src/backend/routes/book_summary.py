@@ -21,7 +21,13 @@ def handler(event, context):
 
         openAI_response = get_completion(endpoint_type, strings, None)
 
-        return openAI_response
+        body = {
+            "GPT_response": openAI_response.replace("\"", "")
+        }
+        
+        return {"statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps(body)}
     
     except:
         return {"statusCode": 500,

@@ -192,7 +192,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695246354141-2023-09-20T21:45:54.141Z/label-talk-backend.zip"
         },
         "Handler": "routes.health.handler",
         "Runtime": "python3.11",
@@ -204,11 +204,11 @@
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
             "OPEN_AI_KEY": "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",
-            "MODEL_ID": "gpt-3.5-turbo",
+            "MODEL_ID": "gpt-3.5-turbo-16k-0613",
             "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
-            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
+            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição em portugês de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e a headline e não use aspas. Formate da seguinte maneira:\nHEAD: [Headline]\nDESC: [Descrição] \nLabels:"
           }
         },
         "Role": {
@@ -229,7 +229,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695246354141-2023-09-20T21:45:54.141Z/label-talk-backend.zip"
         },
         "Handler": "routes.instagram_caption.handler",
         "Runtime": "python3.11",
@@ -241,11 +241,11 @@
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
             "OPEN_AI_KEY": "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",
-            "MODEL_ID": "gpt-3.5-turbo",
+            "MODEL_ID": "gpt-3.5-turbo-16k-0613",
             "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
-            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
+            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição em portugês de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e a headline e não use aspas. Formate da seguinte maneira:\nHEAD: [Headline]\nDESC: [Descrição] \nLabels:"
           }
         },
         "Role": {
@@ -269,7 +269,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695246354141-2023-09-20T21:45:54.141Z/label-talk-backend.zip"
         },
         "Handler": "routes.product_caption.handler",
         "Runtime": "python3.11",
@@ -281,11 +281,11 @@
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
             "OPEN_AI_KEY": "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",
-            "MODEL_ID": "gpt-3.5-turbo",
+            "MODEL_ID": "gpt-3.5-turbo-16k-0613",
             "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
-            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
+            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição em portugês de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e a headline e não use aspas. Formate da seguinte maneira:\nHEAD: [Headline]\nDESC: [Descrição] \nLabels:"
           }
         },
         "Role": {
@@ -309,7 +309,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695246354141-2023-09-20T21:45:54.141Z/label-talk-backend.zip"
         },
         "Handler": "routes.book_summary.handler",
         "Runtime": "python3.11",
@@ -321,11 +321,11 @@
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
             "OPEN_AI_KEY": "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",
-            "MODEL_ID": "gpt-3.5-turbo",
+            "MODEL_ID": "gpt-3.5-turbo-16k-0613",
             "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
-            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
+            "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição em portugês de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e a headline e não use aspas. Formate da seguinte maneira:\nHEAD: [Headline]\nDESC: [Descrição] \nLabels:"
           }
         },
         "Role": {
@@ -342,44 +342,44 @@
         "BookUnderscoresummaryLogGroup"
       ]
     },
-    "HealthLambdaVersionzVCErUx3MMGuEBqLOAX5PHM7A4C7o6G4RWZRiqNNR0": {
+    "HealthLambdaVersionPpKIeJqyW9E9BevpJ0APZDkXXIBvPiqv5MMvnQpHc": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HealthLambdaFunction"
         },
-        "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
+        "CodeSha256": "TEtywgwFhhmrey79L+2fjGwrhSQYNmxNAcwYxIy0WCQ="
       }
     },
-    "InstagramUnderscorecaptionLambdaVersionjOKhXVTx1WIOvl8Zv0d5DDk3C10KA3yZVWGNFqHH0Co": {
+    "InstagramUnderscorecaptionLambdaVersionfRWhKiXS0Bqnxxa2wU3DBgvViXSU1p12COftBPNM6k": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "InstagramUnderscorecaptionLambdaFunction"
         },
-        "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
+        "CodeSha256": "TEtywgwFhhmrey79L+2fjGwrhSQYNmxNAcwYxIy0WCQ="
       }
     },
-    "ProductUnderscorecaptionLambdaVersionV1DU4QQQ6gGmbPTMXN69TM1o8Z2OmCP6Jh2dTBwEwI": {
+    "ProductUnderscorecaptionLambdaVersionOdAsYIgQRVy42S69BgL4rul2ALcgl2UeiIh895E": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "ProductUnderscorecaptionLambdaFunction"
         },
-        "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
+        "CodeSha256": "TEtywgwFhhmrey79L+2fjGwrhSQYNmxNAcwYxIy0WCQ="
       }
     },
-    "BookUnderscoresummaryLambdaVersionDurxdFFSfnvVyX2TZrucNNXn2QJPxhBhQR6Z3lsfq0": {
+    "BookUnderscoresummaryLambdaVersionkd3kxixN6HNRyfT1wxLrkye8PMw8E5MkOjSzLGIWM": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "BookUnderscoresummaryLambdaFunction"
         },
-        "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
+        "CodeSha256": "TEtywgwFhhmrey79L+2fjGwrhSQYNmxNAcwYxIy0WCQ="
       }
     },
     "HttpApi": {
@@ -715,7 +715,7 @@
     "HealthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HealthLambdaVersionzVCErUx3MMGuEBqLOAX5PHM7A4C7o6G4RWZRiqNNR0"
+        "Ref": "HealthLambdaVersionPpKIeJqyW9E9BevpJ0APZDkXXIBvPiqv5MMvnQpHc"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-HealthLambdaFunctionQualifiedArn"
@@ -724,7 +724,7 @@
     "InstagramUnderscorecaptionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "InstagramUnderscorecaptionLambdaVersionjOKhXVTx1WIOvl8Zv0d5DDk3C10KA3yZVWGNFqHH0Co"
+        "Ref": "InstagramUnderscorecaptionLambdaVersionfRWhKiXS0Bqnxxa2wU3DBgvViXSU1p12COftBPNM6k"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-InstagramUnderscorecaptionLambdaFunctionQualifiedArn"
@@ -733,7 +733,7 @@
     "ProductUnderscorecaptionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "ProductUnderscorecaptionLambdaVersionV1DU4QQQ6gGmbPTMXN69TM1o8Z2OmCP6Jh2dTBwEwI"
+        "Ref": "ProductUnderscorecaptionLambdaVersionOdAsYIgQRVy42S69BgL4rul2ALcgl2UeiIh895E"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-ProductUnderscorecaptionLambdaFunctionQualifiedArn"
@@ -742,7 +742,7 @@
     "BookUnderscoresummaryLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "BookUnderscoresummaryLambdaVersionDurxdFFSfnvVyX2TZrucNNXn2QJPxhBhQR6Z3lsfq0"
+        "Ref": "BookUnderscoresummaryLambdaVersionkd3kxixN6HNRyfT1wxLrkye8PMw8E5MkOjSzLGIWM"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-BookUnderscoresummaryLambdaFunctionQualifiedArn"

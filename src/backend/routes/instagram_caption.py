@@ -22,8 +22,13 @@ def handler(event, context):
         labels = detect_labels(bucket_name, image_name, max_labels)
 
         openAI_response = get_completion(endpoint_type, labels, adjective)
-
-        return openAI_response
+        
+        body = {
+            "GPT_response": openAI_response.replace("\"", "")
+        }
+        return {"statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps(body)}
     
     except:
         return {"statusCode": 500,

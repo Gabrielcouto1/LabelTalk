@@ -20,16 +20,26 @@ def handler(event, context):
             "headers": {"Content-Type": "application/json"},
             "body": json.dumps({"errorMsg": "Invalid request"}),
         }
-    try:
-        labels = detect_labels(bucket_name, image_name, max_labels)
+    
+    labels = detect_labels(bucket_name, image_name, max_labels)
 
-        openAI_response = get_completion(endpoint_type, labels, adjective)
+    openAI_response = get_completion(endpoint_type, labels, adjective)
+    
+    strings = openAI_response.replace("\n", "").split("DESC: ")
 
-        return openAI_response
+    headline = strings[0].replace("HEAD: ", "")
+    descricao = strings[1]
 
-    except:
-        return {
-            "statusCode": 500,
-            "headers": {"Content-Type": "application/json"},
-            "body": json.dumps({"errorMsg": "OpeAi or Rekognition error"}),
-        }
+    body = {"headline": headline,
+            "descricao": descricao}   
+
+    return {"statusCode": 200,
+        "headers": {"Content-Type": "application/json"},
+        "body": json.dumps(body)}
+
+    # except:
+    #     return {
+    #         "statusCode": 500,
+    #         "headers": {"Content-Type": "application/json"},
+    #         "body": json.dumps({"errorMsg": "OpeAi or Rekognition error"}),
+    #     }
