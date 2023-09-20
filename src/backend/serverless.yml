@@ -1,5 +1,5 @@
 service: label-talk-backend
-frameworkVersion: '3'
+frameworkVersion: "3"
 
 useDotenv: true
 
@@ -7,33 +7,34 @@ provider:
   name: aws
   runtime: python3.11
   environment:
-    REGION: 'us-east-1'
+    REGION: "us-east-1"
     BUCKET_NAME: ${env:BUCKET_NAME}
-    OPEN_AI_KEY: ${env:OPEN_AI_KEY} 
+    OPEN_AI_KEY: ${env:OPEN_AI_KEY}
     MODEL_ID: ${env:MODEL_ID}
     GPT_ENDPOINT: ${env:GPT_ENDPOINT}
     INSTA_PROMPT: ${env:INSTA_PROMPT}
     BOOK_PROMPT: ${env:BOOK_PROMPT}
-    
+    PRODUCT_PROMPT: ${env:PRODUCT_PROMPT}
+
   iam:
-    role: 
+    role:
       name: label-talk-role
       statements:
-        - Effect: 'Allow'
-          Resource: '*'
-          Action: 
-          - 'lambda:FullAccess'
-          - 'lambda:InvokeFunction'
-        - Effect: 'Allow'
-          Action: 
-            - 'rekognition:*'
-          Resource: '*'
+        - Effect: "Allow"
+          Resource: "*"
+          Action:
+            - "lambda:FullAccess"
+            - "lambda:InvokeFunction"
+        - Effect: "Allow"
+          Action:
+            - "rekognition:*"
+          Resource: "*"
         - Effect: Allow
-          Action: 
-            - 's3:GetObject' 
-            - 's3:PutObject'
-            - 's3:PutObjectAcl'
-          Resource: '*'
+          Action:
+            - "s3:GetObject"
+            - "s3:PutObject"
+            - "s3:PutObjectAcl"
+          Resource: "*"
 
 functions:
   health:
@@ -47,19 +48,28 @@ functions:
     handler: routes.instagram_caption.handler
     layers:
       - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
-    events: 
+    events:
       - httpApi:
           path: /insta
           method: post
     Timeout: 15
 
+  product_caption:
+      handler: routes.product_caption.handler
+      layers:
+        - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+      events:
+        - httpApi:
+            path: /product
+            method: post
+      Timeout: 15
+
   book_summary:
     handler: routes.book_summary.handler
     layers:
       - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
-    events: 
+    events:
       - httpApi:
           path: /book
           method: post
     Timeout: 15
-

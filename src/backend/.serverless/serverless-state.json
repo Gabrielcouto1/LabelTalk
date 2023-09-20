@@ -14,7 +14,8 @@
         "MODEL_ID": "gpt-3.5-turbo",
         "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
         "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
-        "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
+        "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
+        "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
       },
       "iam": {
         "role": {
@@ -135,6 +136,12 @@
               "LogGroupName": "/aws/lambda/label-talk-backend-dev-instagram_caption"
             }
           },
+          "ProductUnderscorecaptionLogGroup": {
+            "Type": "AWS::Logs::LogGroup",
+            "Properties": {
+              "LogGroupName": "/aws/lambda/label-talk-backend-dev-product_caption"
+            }
+          },
           "BookUnderscoresummaryLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
@@ -223,7 +230,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
+                "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
               },
               "Handler": "routes.health.handler",
               "Runtime": "python3.11",
@@ -238,7 +245,8 @@
                   "MODEL_ID": "gpt-3.5-turbo",
                   "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
                   "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
-                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
+                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
+                  "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
                 }
               },
               "Role": {
@@ -259,7 +267,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
+                "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
               },
               "Handler": "routes.instagram_caption.handler",
               "Runtime": "python3.11",
@@ -274,7 +282,8 @@
                   "MODEL_ID": "gpt-3.5-turbo",
                   "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
                   "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
-                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
+                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
+                  "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
                 }
               },
               "Role": {
@@ -291,6 +300,46 @@
               "InstagramUnderscorecaptionLogGroup"
             ]
           },
+          "ProductUnderscorecaptionLambdaFunction": {
+            "Type": "AWS::Lambda::Function",
+            "Properties": {
+              "Code": {
+                "S3Bucket": {
+                  "Ref": "ServerlessDeploymentBucket"
+                },
+                "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
+              },
+              "Handler": "routes.product_caption.handler",
+              "Runtime": "python3.11",
+              "FunctionName": "label-talk-backend-dev-product_caption",
+              "MemorySize": 1024,
+              "Timeout": 6,
+              "Environment": {
+                "Variables": {
+                  "REGION": "us-east-1",
+                  "BUCKET_NAME": "label-talk-bucket",
+                  "OPEN_AI_KEY": "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",
+                  "MODEL_ID": "gpt-3.5-turbo",
+                  "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
+                  "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
+                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
+                  "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
+                }
+              },
+              "Role": {
+                "Fn::GetAtt": [
+                  "IamRoleLambdaExecution",
+                  "Arn"
+                ]
+              },
+              "Layers": [
+                "arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1"
+              ]
+            },
+            "DependsOn": [
+              "ProductUnderscorecaptionLogGroup"
+            ]
+          },
           "BookUnderscoresummaryLambdaFunction": {
             "Type": "AWS::Lambda::Function",
             "Properties": {
@@ -298,7 +347,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
+                "S3Key": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z/label-talk-backend.zip"
               },
               "Handler": "routes.book_summary.handler",
               "Runtime": "python3.11",
@@ -313,7 +362,8 @@
                   "MODEL_ID": "gpt-3.5-turbo",
                   "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
                   "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
-                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
+                  "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: ",
+                  "PRODUCT_PROMPT": "Tenho uma resposta do rekognition contendo as principais labels de uma foto de um produto. Quero que você crie uma descrição de 30 a 60 palavras do produto para colocar como descrição no meu e-commerce. Responda somente com a descrição e não use aspas. Labels: "
                 }
               },
               "Role": {
@@ -330,34 +380,44 @@
               "BookUnderscoresummaryLogGroup"
             ]
           },
-          "HealthLambdaVersionCFjmYXl9T3YncSQhGqAko5dU43rEA1n510igizqJ7o": {
+          "HealthLambdaVersionzVCErUx3MMGuEBqLOAX5PHM7A4C7o6G4RWZRiqNNR0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "HealthLambdaFunction"
               },
-              "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
+              "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
             }
           },
-          "InstagramUnderscorecaptionLambdaVersion8EaKdFVf11tK62Ao08W4yDqXAI5if2ne2y74G86vIs": {
+          "InstagramUnderscorecaptionLambdaVersionjOKhXVTx1WIOvl8Zv0d5DDk3C10KA3yZVWGNFqHH0Co": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "InstagramUnderscorecaptionLambdaFunction"
               },
-              "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
+              "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
             }
           },
-          "BookUnderscoresummaryLambdaVersionhLvzoItXeHm3zYQoGBGGbD49dzJpITbjrD2pYFPESo": {
+          "ProductUnderscorecaptionLambdaVersionV1DU4QQQ6gGmbPTMXN69TM1o8Z2OmCP6Jh2dTBwEwI": {
+            "Type": "AWS::Lambda::Version",
+            "DeletionPolicy": "Retain",
+            "Properties": {
+              "FunctionName": {
+                "Ref": "ProductUnderscorecaptionLambdaFunction"
+              },
+              "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
+            }
+          },
+          "BookUnderscoresummaryLambdaVersionDurxdFFSfnvVyX2TZrucNNXn2QJPxhBhQR6Z3lsfq0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "BookUnderscoresummaryLambdaFunction"
               },
-              "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
+              "CodeSha256": "uLBHWPrw12FM4MjT3SjiiLIz5AGTFtj4LJJWnSQhrMQ="
             }
           },
           "HttpApi": {
@@ -524,6 +584,78 @@
             },
             "DependsOn": "HttpApiIntegrationInstagramUnderscorecaption"
           },
+          "ProductUnderscorecaptionLambdaPermissionHttpApi": {
+            "Type": "AWS::Lambda::Permission",
+            "Properties": {
+              "FunctionName": {
+                "Fn::GetAtt": [
+                  "ProductUnderscorecaptionLambdaFunction",
+                  "Arn"
+                ]
+              },
+              "Action": "lambda:InvokeFunction",
+              "Principal": "apigateway.amazonaws.com",
+              "SourceArn": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":execute-api:",
+                    {
+                      "Ref": "AWS::Region"
+                    },
+                    ":",
+                    {
+                      "Ref": "AWS::AccountId"
+                    },
+                    ":",
+                    {
+                      "Ref": "HttpApi"
+                    },
+                    "/*"
+                  ]
+                ]
+              }
+            }
+          },
+          "HttpApiIntegrationProductUnderscorecaption": {
+            "Type": "AWS::ApiGatewayV2::Integration",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "IntegrationType": "AWS_PROXY",
+              "IntegrationUri": {
+                "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ProductUnderscorecaptionLambdaPermissionHttpApi\"][\"Properties\"][\"FunctionName\"]"
+              },
+              "PayloadFormatVersion": "2.0",
+              "TimeoutInMillis": 30000
+            }
+          },
+          "HttpApiRoutePostProduct": {
+            "Type": "AWS::ApiGatewayV2::Route",
+            "Properties": {
+              "ApiId": {
+                "Ref": "HttpApi"
+              },
+              "RouteKey": "POST /product",
+              "Target": {
+                "Fn::Join": [
+                  "/",
+                  [
+                    "integrations",
+                    {
+                      "Ref": "HttpApiIntegrationProductUnderscorecaption"
+                    }
+                  ]
+                ]
+              }
+            },
+            "DependsOn": "HttpApiIntegrationProductUnderscorecaption"
+          },
           "BookUnderscoresummaryLambdaPermissionHttpApi": {
             "Type": "AWS::Lambda::Permission",
             "Properties": {
@@ -609,7 +741,7 @@
           "HealthLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "HealthLambdaVersionCFjmYXl9T3YncSQhGqAko5dU43rEA1n510igizqJ7o"
+              "Ref": "HealthLambdaVersionzVCErUx3MMGuEBqLOAX5PHM7A4C7o6G4RWZRiqNNR0"
             },
             "Export": {
               "Name": "sls-label-talk-backend-dev-HealthLambdaFunctionQualifiedArn"
@@ -618,16 +750,25 @@
           "InstagramUnderscorecaptionLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "InstagramUnderscorecaptionLambdaVersion8EaKdFVf11tK62Ao08W4yDqXAI5if2ne2y74G86vIs"
+              "Ref": "InstagramUnderscorecaptionLambdaVersionjOKhXVTx1WIOvl8Zv0d5DDk3C10KA3yZVWGNFqHH0Co"
             },
             "Export": {
               "Name": "sls-label-talk-backend-dev-InstagramUnderscorecaptionLambdaFunctionQualifiedArn"
             }
           },
+          "ProductUnderscorecaptionLambdaFunctionQualifiedArn": {
+            "Description": "Current Lambda function version",
+            "Value": {
+              "Ref": "ProductUnderscorecaptionLambdaVersionV1DU4QQQ6gGmbPTMXN69TM1o8Z2OmCP6Jh2dTBwEwI"
+            },
+            "Export": {
+              "Name": "sls-label-talk-backend-dev-ProductUnderscorecaptionLambdaFunctionQualifiedArn"
+            }
+          },
           "BookUnderscoresummaryLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "BookUnderscoresummaryLambdaVersionhLvzoItXeHm3zYQoGBGGbD49dzJpITbjrD2pYFPESo"
+              "Ref": "BookUnderscoresummaryLambdaVersionDurxdFFSfnvVyX2TZrucNNXn2QJPxhBhQR6Z3lsfq0"
             },
             "Export": {
               "Name": "sls-label-talk-backend-dev-BookUnderscoresummaryLambdaFunctionQualifiedArn"
@@ -773,7 +914,7 @@
         "timeout": 6,
         "runtime": "python3.11",
         "vpc": {},
-        "versionLogicalId": "HealthLambdaVersionCFjmYXl9T3YncSQhGqAko5dU43rEA1n510igizqJ7o"
+        "versionLogicalId": "HealthLambdaVersionzVCErUx3MMGuEBqLOAX5PHM7A4C7o6G4RWZRiqNNR0"
       },
       "instagram_caption": {
         "handler": "routes.instagram_caption.handler",
@@ -797,7 +938,31 @@
         "timeout": 6,
         "runtime": "python3.11",
         "vpc": {},
-        "versionLogicalId": "InstagramUnderscorecaptionLambdaVersion8EaKdFVf11tK62Ao08W4yDqXAI5if2ne2y74G86vIs"
+        "versionLogicalId": "InstagramUnderscorecaptionLambdaVersionjOKhXVTx1WIOvl8Zv0d5DDk3C10KA3yZVWGNFqHH0Co"
+      },
+      "product_caption": {
+        "handler": "routes.product_caption.handler",
+        "layers": {
+          "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"ProductUnderscorecaptionLambdaFunction\"][\"Properties\"][\"Layers\"]"
+        },
+        "events": [
+          {
+            "httpApi": {
+              "path": "/product",
+              "method": "post"
+            },
+            "resolvedMethod": "POST",
+            "resolvedPath": "/product"
+          }
+        ],
+        "Timeout": 15,
+        "name": "label-talk-backend-dev-product_caption",
+        "package": {},
+        "memory": 1024,
+        "timeout": 6,
+        "runtime": "python3.11",
+        "vpc": {},
+        "versionLogicalId": "ProductUnderscorecaptionLambdaVersionV1DU4QQQ6gGmbPTMXN69TM1o8Z2OmCP6Jh2dTBwEwI"
       },
       "book_summary": {
         "handler": "routes.book_summary.handler",
@@ -821,7 +986,7 @@
         "timeout": 6,
         "runtime": "python3.11",
         "vpc": {},
-        "versionLogicalId": "BookUnderscoresummaryLambdaVersionhLvzoItXeHm3zYQoGBGGbD49dzJpITbjrD2pYFPESo"
+        "versionLogicalId": "BookUnderscoresummaryLambdaVersionDurxdFFSfnvVyX2TZrucNNXn2QJPxhBhQR6Z3lsfq0"
       }
     },
     "configValidationMode": "warn",
@@ -839,10 +1004,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Documentos de Aulas\\LabelTalk\\src\\backend\\.serverless\\label-talk-backend.zip"
+    "artifact": "C:\\Users\\Livius\\Desktop\\BSI\\TechWeek\\prototipo\\git\\LabelTalk\\src\\backend\\.serverless\\label-talk-backend.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z",
+    "artifactDirectoryName": "serverless/label-talk-backend/dev/1695222926941-2023-09-20T15:15:26.941Z",
     "artifact": "label-talk-backend.zip"
   }
 }
