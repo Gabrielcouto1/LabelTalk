@@ -186,7 +186,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695163127670-2023-09-19T22:38:47.670Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
         },
         "Handler": "routes.health.handler",
         "Runtime": "python3.11",
@@ -197,7 +197,9 @@
           "Variables": {
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
-            "OPEN_AI_KEY": "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",
+            "OPEN_AI_KEY": "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",
+            "MODEL_ID": "gpt-3.5-turbo",
+            "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
           }
@@ -220,7 +222,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695163127670-2023-09-19T22:38:47.670Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
         },
         "Handler": "routes.instagram_caption.handler",
         "Runtime": "python3.11",
@@ -231,7 +233,9 @@
           "Variables": {
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
-            "OPEN_AI_KEY": "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",
+            "OPEN_AI_KEY": "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",
+            "MODEL_ID": "gpt-3.5-turbo",
+            "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
           }
@@ -257,7 +261,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/label-talk-backend/dev/1695163127670-2023-09-19T22:38:47.670Z/label-talk-backend.zip"
+          "S3Key": "serverless/label-talk-backend/dev/1695167882615-2023-09-19T23:58:02.615Z/label-talk-backend.zip"
         },
         "Handler": "routes.book_summary.handler",
         "Runtime": "python3.11",
@@ -268,7 +272,9 @@
           "Variables": {
             "REGION": "us-east-1",
             "BUCKET_NAME": "label-talk-bucket",
-            "OPEN_AI_KEY": "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",
+            "OPEN_AI_KEY": "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",
+            "MODEL_ID": "gpt-3.5-turbo",
+            "GPT_ENDPOINT": "https://api.openai.com/v1/chat/completions",
             "INSTA_PROMPT": "I have a response about a photo analized by aws-Rekognition. It returned the main labels:I want you to generate a subtitle for this photo to put on an instagram post. Translate it to portuguese. Answer with only the subtitle (15-25 words). Main Labels: ",
             "BOOK_PROMPT": "Tenho a resposta do Rekognition lendo o texto da capa de um livro. Com base nas strings analisadas pelo rekognition, me gere um resumo do livro. Me responda apenas com o resumo. Strings: "
           }
@@ -287,34 +293,34 @@
         "BookUnderscoresummaryLogGroup"
       ]
     },
-    "HealthLambdaVersionMotVHl9bvuME0iISGYb5co32M32a8ccCHGXURp5hu1A": {
+    "HealthLambdaVersionCFjmYXl9T3YncSQhGqAko5dU43rEA1n510igizqJ7o": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "HealthLambdaFunction"
         },
-        "CodeSha256": "FA57ypTxdC+m71m4TSautgy5n0eyunXMRBa4rhTZjxY="
+        "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
       }
     },
-    "InstagramUnderscorecaptionLambdaVersionTM6sjfdrvHmb026HYvHReWQv02lheL5Dl8fmO4uACw": {
+    "InstagramUnderscorecaptionLambdaVersion8EaKdFVf11tK62Ao08W4yDqXAI5if2ne2y74G86vIs": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "InstagramUnderscorecaptionLambdaFunction"
         },
-        "CodeSha256": "FA57ypTxdC+m71m4TSautgy5n0eyunXMRBa4rhTZjxY="
+        "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
       }
     },
-    "BookUnderscoresummaryLambdaVersionCtXRYE3AAn6z1YzLuImcrEleoTtUjY5eZOU5O9mexx0": {
+    "BookUnderscoresummaryLambdaVersionhLvzoItXeHm3zYQoGBGGbD49dzJpITbjrD2pYFPESo": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "BookUnderscoresummaryLambdaFunction"
         },
-        "CodeSha256": "FA57ypTxdC+m71m4TSautgy5n0eyunXMRBa4rhTZjxY="
+        "CodeSha256": "FU4SjSr2SOFP5EEfsiefOZOtUuPfLhPZjXkDS2PtXvs="
       }
     },
     "HttpApi": {
@@ -575,7 +581,7 @@
     "HealthLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "HealthLambdaVersionMotVHl9bvuME0iISGYb5co32M32a8ccCHGXURp5hu1A"
+        "Ref": "HealthLambdaVersionCFjmYXl9T3YncSQhGqAko5dU43rEA1n510igizqJ7o"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-HealthLambdaFunctionQualifiedArn"
@@ -584,7 +590,7 @@
     "InstagramUnderscorecaptionLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "InstagramUnderscorecaptionLambdaVersionTM6sjfdrvHmb026HYvHReWQv02lheL5Dl8fmO4uACw"
+        "Ref": "InstagramUnderscorecaptionLambdaVersion8EaKdFVf11tK62Ao08W4yDqXAI5if2ne2y74G86vIs"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-InstagramUnderscorecaptionLambdaFunctionQualifiedArn"
@@ -593,7 +599,7 @@
     "BookUnderscoresummaryLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "BookUnderscoresummaryLambdaVersionCtXRYE3AAn6z1YzLuImcrEleoTtUjY5eZOU5O9mexx0"
+        "Ref": "BookUnderscoresummaryLambdaVersionhLvzoItXeHm3zYQoGBGGbD49dzJpITbjrD2pYFPESo"
       },
       "Export": {
         "Name": "sls-label-talk-backend-dev-BookUnderscoresummaryLambdaFunctionQualifiedArn"
