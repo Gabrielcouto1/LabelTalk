@@ -1,10 +1,12 @@
 import requests
 import os
+import json
 
 api_key = os.environ['OPEN_AI_KEY']
 
 def get_completion(endpoint_type, list, adjective):
-    url = "https://api.openai.com/v1/engines/davinci/completions"
+    url      = os.environ['GPT_ENDPOINT']
+    model_id = os.environ['MODEL_ID']
 
     prompt = os.environ[endpoint_type]
     print(list)
@@ -15,22 +17,20 @@ def get_completion(endpoint_type, list, adjective):
         prompt += "Subtitle Adjective: "+ adjective
 
     # Dados da solicitação
-    data = {
-        "prompt": prompt,
-        "max_tokens": 50,
-    }
+    data = {'model': model_id, 'messages': [{'role': 'user', 'content': prompt}]}
 
     # Passando a chave da API
     headers = {"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}
 
     # Enviando solicitação POST
     response = requests.post(url, json=data, headers=headers)
-    return {"url": url,
-            "data": data,
-            "headers": headers}
 
     if response.status_code == 200:
         result = response.json()
-        return result["choices"][0]["text"]
+        return {
+                "statusCode":200,
+                "headers": {"Content-Type": "application/json"},
+                "body": json.dumps({"GPT_response": result["choices"][0]["message"]["content"]})
+               }
     else:
-        return f"Erro: {response.status_code}"
+        return f"Error: {response.status_code}"

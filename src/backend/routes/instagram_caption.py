@@ -23,10 +23,7 @@ def handler(event, context):
 
         openAI_response = get_completion(endpoint_type, labels, adjective)
 
-        return {"statusCode": 200,
-            "headers": {"Content-Type": "application/json"},
-            "body": json.dumps(openAI_response)
-           }
+        return openAI_response
     
     except:
         return {"statusCode": 500,

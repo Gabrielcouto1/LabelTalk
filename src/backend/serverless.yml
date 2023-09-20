@@ -10,6 +10,8 @@ provider:
     REGION: 'us-east-1'
     BUCKET_NAME: ${env:BUCKET_NAME}
     OPEN_AI_KEY: ${env:OPEN_AI_KEY} 
+    MODEL_ID: ${env:MODEL_ID}
+    GPT_ENDPOINT: ${env:GPT_ENDPOINT}
     INSTA_PROMPT: ${env:INSTA_PROMPT}
     BOOK_PROMPT: ${env:BOOK_PROMPT}
     
@@ -49,6 +51,7 @@ functions:
       - httpApi:
           path: /insta
           method: post
+    Timeout: 15
 
   book_summary:
     handler: routes.book_summary.handler
@@ -58,4 +61,5 @@ functions:
       - httpApi:
           path: /book
           method: post
+    Timeout: 15
 
