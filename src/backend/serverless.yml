@@ -62,8 +62,8 @@ provider:
           Resource: "*"
 
 functions:
-  health:
-    handler: routes.health.handler
+  landing_page:
+    handler: routes.landing_page.handler
     events:
       - httpApi:
           path: /
