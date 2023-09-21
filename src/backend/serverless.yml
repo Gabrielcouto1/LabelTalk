@@ -3,6 +3,14 @@ frameworkVersion: "3"
 
 useDotenv: true
 
+plugins:
+  - serverless-finch
+
+custom:
+  client: 
+    bucketName: label-talk-frontend
+    distributionFolder: ../frontend
+
 provider:
   name: aws
   runtime: python3.11
@@ -15,6 +23,23 @@ provider:
     INSTA_PROMPT: ${env:INSTA_PROMPT}
     BOOK_PROMPT: ${env:BOOK_PROMPT}
     PRODUCT_PROMPT: ${env:PRODUCT_PROMPT}
+
+  httpApi:
+    cors:
+      allowedOrigins:
+        - http://label-talk-frontend.s3-website-us-east-1.amazonaws.com
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+        - Access-Control-Allow-Headers
+        - Access-Control-Allow-Origin
+      allowedMethods:
+        - GET
+        - POST
+      allowCredentials: true
+      exposedResponseHeaders:
+        - Special-Response-Header
+      maxAge: 16000
 
   iam:
     role:
@@ -52,17 +77,17 @@ functions:
       - httpApi:
           path: /insta
           method: post
-    Timeout: 15
+    timeout: 15
 
   product_caption:
-      handler: routes.product_caption.handler
-      layers:
-        - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
-      events:
-        - httpApi:
-            path: /product
-            method: post
-      Timeout: 15
+    handler: routes.product_caption.handler
+    layers:
+      - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+    events:
+      - httpApi:
+          path: /product
+          method: post
+    timeout: 15
 
   book_summary:
     handler: routes.book_summary.handler
@@ -72,4 +97,4 @@ functions:
       - httpApi:
           path: /book
           method: post
-    Timeout: 15
+    timeout: 15
