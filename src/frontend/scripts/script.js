@@ -1,4 +1,6 @@
 function testePost(){
+    document.getElementById('loadingDiv').style.display = 'block';
+
     var form = {
         "image_name": "produto_geladeira2.jpg",
         "adjective": "grande"
@@ -18,5 +20,7 @@ function testePost(){
         console.log(data);
         document.getElementById('headline').innerText = data.headline
         document.getElementById('descricao').innerText = data.descricao
+        
+        document.getElementById('loadingDiv').style.display = 'none';
     })
 }
