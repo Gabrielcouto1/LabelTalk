@@ -98,3 +98,12 @@ functions:
           path: /book
           method: post
     timeout: 15
+
+  upload_image:
+    handler: routes.upload_image.handler
+    layers:
+      - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+    events:
+      - httpApi:
+          path: /upload
+          method: post

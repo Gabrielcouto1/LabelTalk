@@ -1,6 +1,11 @@
 <html>
     <h1 >Teste</h1>
 
+    <button onclick="redirectTo('/insta')">Insta</button>
+    <button onclick="redirectTo('/produto')">Produto</button>
+    <button onclick="redirectTo('/livro')">Livro</button>
+
+
     <button onclick="testePost()">Fazer request (geladeira)</button>
 
     <div id="loadingDiv" style="display: none;">
@@ -8,5 +13,13 @@
     </div>
     <h2 id="headline"></h2>
     <h3 id="descricao"></h3>
+
     <script src="scripts/script.js"></script>
+
+    <script>
+        function redirectTo(path) {
+    window.location.href = path; // Redireciona para a URL da subpágina desejada
+    }
+
+    </script>
 </html>
