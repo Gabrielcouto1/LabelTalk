@@ -8,7 +8,7 @@ plugins:
 
 custom:
   client: 
-    bucketName: label-talk-frontend
+    bucketName: label-talk
     distributionFolder: ../frontend
 
 provider:
@@ -27,7 +27,7 @@ provider:
   httpApi:
     cors:
       allowedOrigins:
-        - http://label-talk-frontend.s3-website-us-east-1.amazonaws.com
+        - http://label-talk.s3-website-us-east-1.amazonaws.com
       allowedHeaders:
         - Content-Type
         - Authorization
