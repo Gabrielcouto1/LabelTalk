@@ -1,4 +1,4 @@
-function uploadAndDisplayImage() {
+function uploadAndDisplayImage(type) {
     const form = document.getElementById('imageUploadForm');
 
     const fileInput = form.querySelector('input[name="image"]').files[0];
@@ -29,9 +29,10 @@ function uploadAndDisplayImage() {
                 const s3ImageUrl = `https://label-talk-bucket.s3.amazonaws.com/${data}`;
                 
                 const imageElement = document.createElement('img');
-                
-                testePost(data, document.getElementById('adjetivo').value);
-
+                if(type=="product"||type=="insta")
+                    post(data, document.getElementById('adjetivo').value, type);
+                else
+                    post(data, null, type)
                 imageElement.src = s3ImageUrl;
                 s3ImageDiv.innerHTML = '';
                 s3ImageDiv.appendChild(imageElement);
@@ -47,17 +48,24 @@ function uploadAndDisplayImage() {
     reader.readAsDataURL(fileInput);
 }
 
-function testePost(image_name, adjective){
+function post(image_name, adjective, type){
     document.getElementById('loadingDiv').style.display = 'block';
-    
-    var form = {
-        "image_name": image_name,
-        "adjective": adjective
+
+    url = `https://24hj51kpaf.execute-api.us-east-1.amazonaws.com/${type}`
+
+    if(adjective){
+        var form = {
+            "image_name": image_name,
+            "adjective": adjective
+        }
     }
-
-    console.log(form);
-
-    fetch("https://24hj51kpaf.execute-api.us-east-1.amazonaws.com/product", {
+    else{
+        var form = {
+            "image_name": image_name
+        }
+    }
+        
+    fetch(url, {
         method: "POST",
         headers: {'content-type': 'application/json',
                   'Access-Control-Allow-Origin': '*',
@@ -67,9 +75,17 @@ function testePost(image_name, adjective){
     .then(response=>response.json())
     .then(data=>{
         console.log(data);
-        document.getElementById('headline').innerText = data.headline
-        document.getElementById('descricao').innerText = data.descricao
+        if(type=="product"){
+            document.getElementById('headline').innerText = data.headline
+            document.getElementById('descricao').innerText = data.descricao
+        }
+        else
+            document.getElementById('descricao').innerText = data.GPT_response
         
         document.getElementById('loadingDiv').style.display = 'none';
     })
+}
+
+function redirectTo(path) {
+    window.location.href = path; // Redireciona para a URL da subpágina desejada
 }

@@ -2,7 +2,7 @@
 <html>
 
 <meta charset="UTF-8">
-
+<button onclick="redirectTo('/')">Voltar</button>
 <h1>Gerar legenda e headline para produto</h1>
 
 <form enctype="multipart/form-data" id="imageUploadForm">
@@ -35,7 +35,7 @@
 
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        uploadAndDisplayImage(); // Chame a função quando o botão de submit for clicado
+        uploadAndDisplayImage("product"); // Chame a função quando o botão de submit for clicado
     });
 </script>
 
