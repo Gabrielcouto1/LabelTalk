@@ -1,11 +1,15 @@
+const empty_chars = "‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎ ‎"
+
 function uploadAndDisplayImage(type) {
+    const resultDiv = document.getElementById('text-output');
+
+    resultDiv.innerHTML = empty_chars + "Gerando legenda ...";
+
     const form = document.getElementById('imageUploadForm');
 
     const fileInput = form.querySelector('input[name="image"]').files[0];
     const reader = new FileReader();
 
-    const resultDiv = document.getElementById('result');
-    const s3ImageDiv = document.getElementById('s3_image');
 
     reader.onload = async () => {
         const base64Data = reader.result.split(',')[1]; // Remover o cabeçalho "data:image/jpeg;base64,"
@@ -26,17 +30,11 @@ function uploadAndDisplayImage(type) {
 
             if (response.ok) {
                 const data = await response.json();
-                const s3ImageUrl = `https://label-talk-bucket.s3.amazonaws.com/${data}`;
-                
-                const imageElement = document.createElement('img');
+
                 if(type=="product"||type=="insta")
                     post(data, document.getElementById('adjetivo').value, type);
                 else
                     post(data, null, type)
-                imageElement.src = s3ImageUrl;
-                s3ImageDiv.innerHTML = '';
-                s3ImageDiv.appendChild(imageElement);
-
             } else {
                 resultDiv.innerHTML = 'Erro ao enviar a imagem.';
             }
@@ -49,7 +47,7 @@ function uploadAndDisplayImage(type) {
 }
 
 function post(image_name, adjective, type){
-    document.getElementById('loadingDiv').style.display = 'block';
+    // document.getElementById('loadingDiv').style.display = 'block';
 
     url = `https://24hj51kpaf.execute-api.us-east-1.amazonaws.com/${type}`
 
@@ -80,9 +78,9 @@ function post(image_name, adjective, type){
             document.getElementById('descricao').innerText = data.descricao
         }
         else
-            document.getElementById('descricao').innerText = data.GPT_response
+            document.getElementById('text-output').innerText = empty_chars +data.GPT_response
         
-        document.getElementById('loadingDiv').style.display = 'none';
+        // document.getElementById('loadingDiv').style.display = 'none';
     })
 }
 
