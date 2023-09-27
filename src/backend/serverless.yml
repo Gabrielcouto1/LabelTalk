@@ -107,3 +107,12 @@ functions:
       - httpApi:
           path: /upload
           method: post
+
+  get_summay_by_title:
+    handler: routes.get_summay_by_title.handler
+    layers:
+      - arn:aws:lambda:us-east-1:028538461261:layer:requests-python:1
+    events:
+      - httpApi:
+          path: /book_title
+          method: post
