@@ -1,255 +1,265 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
+<html lang="en">
 
-    <link rel="stylesheet" href="./style/global.css" />
-    <link rel="stylesheet" href="./style/index.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/service.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Anton:wght@400&display=swap"
-    />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap"
-    />
-    <script src="scripts/script.js"></script>
-  </head>
-  <body>
-    <div class="desktop-1">
-      <div class="produto">
-        <div class="produto-child"></div>
-        <div class="produtos">PRODUTOS</div>
-        <div class="input-img"></div>
-        <div class="result"></div>
-        <img
-          class="mockup-produto-icon"
-          alt=""
-          src="./public/mockupproduto@2x.png"
-        />
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
 
-        <div class="criar-produto">
-          <div class="btn">
-            <div class="btn-child"></div>
-            <div class="content">
-              <img class="arrow-icon" alt="" src="./public/arrow.svg" />
-
-              <b class="criar">CRIAR</b>
-            </div>
-          </div>
-        </div>
-        <div class="voltar-produto">
-          <div class="btn">
-            <div class="btn">
-              <div class="btn-child"></div>
-              <div class="content1">
-                <img class="arrow-icon1" alt="" src="./public/arrow1.svg" />
-
-                <b class="voltar">Voltar</b>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="livro">
-        <div class="produto-child"></div>
-        <div class="livro-item"></div>
-        <div class="livros">LIVROS</div>
-        <div class="input-img1"></div>
-        <div class="input">
-          <div class="input-text"></div>
-          <div class="input-child"></div>
-        </div>
-        <div class="result1"></div>
-        <div class="voltar-livro">
-          <div class="btn-child"></div>
-          <div class="content1">
-            <img class="arrow-icon1" alt="" src="./public/arrow1.svg" />
-
-            <b class="voltar">Voltar</b>
-          </div>
-        </div>
-        <div class="criar-livro">
-          <div class="btn">
-            <div class="btn-child"></div>
-            <div class="content">
-              <img class="arrow-icon" alt="" src="./public/arrow2.svg" />
-
-              <b class="criar">CRIAR</b>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="instagram">
-        <div class="instagram-child"></div>
-        <div class="instagram1">INSTAGRAM</div>
-        <div class="box">
-          <div class="input1"></div>
-          <div class="result2"></div>
-        </div>
-        <div class="output-insta">
-          <img
-            class="instagra-mockup-1-icon"
-            alt=""
-            src="./public/instagra-mockup-1@2x.png"
-          />
-
-          <div class="image-output" id="image-output"> </div>
-          <div class="text-output" id="text-output"></div>
-        </div>
-        <form enctype="multipart/form-data" id="imageUploadForm">
-            <input type="file" class="input-insta" name = "image" id="imageInput"></input>
-
-            <select id="adjetivo" name="adjetivo">
-              <option value="Estético">Estético</option>
-              <option value="Dark">Dark</option>
-              <option value="Conceitual">Conceitual</option>
-              <option value="Pensativa">Pensativa</option>
-              <option value="Chamativa">Chamativa</option>
-              <option value="Engraçada">Engraçada</option>
-          </select>
-          
-            <div class="criar-insta">
-                <div class="btn">
-                  <button type="submit" class="btn-child">
-                    <div class="content">
-                      <img class="arrow-icon" alt="" src="./public/arrow2.svg" />
-        
-                      <b class="criar">CRIAR</b>
+<body>
+    <div id="home">
+        <div id="home-content" class="content">
+            <div id="left" class="sub-content">
+                <div id="product" class="item">
+                    <div class="internal-text">
+                        <h1 class="h1-labels">
+                            PRODUTOS
+                        </h1>
+                        <p class="p-labels">
+                            Envie fotos de seus produtos e crie Headlines, Descrições para seu ecommerce
+                        </p>
                     </div>
-                  </button>
-                  
+                    <div class="btn-create">
+                        <button id="prod" class="btn">
+                            <a href="#"></a>
+                        </button>
+                    </div>
+                </div>
+                <div id="book" class="item">
+                    <div class="internal-text">
+                        <h1 class="h1-labels">
+                            LIVROS
+                        </h1>
+                        <p class="p-labels">
+                            Tire fotos de livros e crie Resenhas automáticas
+                        </p>
+                    </div>
+                    <div class="btn-create">
+                        <button id="bk" class="btn">
+                            <a href="#"></a>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </form>
-
-        <div class="voltar-insta">
-          <div class="btn">
-            <button class="btn-child">
-              <div class="content1">
-                <img class="arrow-icon1" alt="" src="./public/arrow1.svg" />
-  
-                <b class="voltar">Voltar</b>
-              </div>
-            </button>
-            
-          </div>
+            <div id="right" class="sub-content">
+                <div id="title" class="item">
+                    <h1>LABELTALKS</h1>
+                </div>
+                <div id="instagram" class="item">
+                    <div class="internal-text">
+                        <h1 class="h1-labels">
+                            INSTAGRAM
+                        </h1>
+                        <p class="p-labels">
+                            Envie fotos para gerar Legendas automaticamente
+                        </p>
+                    </div>
+                    <div class="btn-create">
+                        <button id="insta" class="btn">
+                            <a href="#"></a>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="home">
-        <div class="bg"></div>
-        <div class="title">
-          <div class="title-child"></div>
-          <div class="labeltalks">LABELTALKS</div>
+
+        <div id="main-background">
+
         </div>
-        <div class="div-instagram">
-          <div class="bg1">
-            <img class="bg-child" alt="" src="./public/rectangle-1@2x.png" />
-
-            <div class="bg-item"></div>
-          </div>
-          <div class="text">
-            <div class="instagram2">INSTAGRAM</div>
-            <div class="envie-fotos-para-container">
-              <span class="envie-fotos-para-container1">
-                <span>Envie fotos para gerar </span>
-                <b>Legendas </b>
-                <span>automaticamente</span>
-              </span>
-            </div>
-          </div>
-          <div class="btn6">
-            <div class="btn-child2"></div>
-            <div class="content6">
-              <img class="arrow-icon6" alt="" src="./public/arrow3.svg" />
-
-              <b class="criar3">CRIAR</b>
-            </div>
-          </div>
-        </div>
-        <div class="div-livros">
-          <img class="bg-icon" alt="" src="./public/bg@2x.png" />
-
-          <div class="text1">
-            <div class="tire-fotos-de-container">
-              <span>Tire fotos de livros e crie </span>
-              <b>Resenhas</b>
-              <span> automáticas</span>
-            </div>
-            <div class="livros1">LIVROS</div>
-          </div>
-          <div class="btn7">
-            <div class="btn-child2"></div>
-            <div class="content6">
-              <img class="arrow-icon6" alt="" src="./public/arrow3.svg" />
-
-              <b class="criar3">CRIAR</b>
-            </div>
-          </div>
-        </div>
-        <div class="div-produtos">
-          <div class="bg2">
-            <img class="bg-inner" alt="" src="./public/rectangle-11@2x.png" />
-
-            <div class="bg-child1"></div>
-          </div>
-          <div class="text2">
-            <div class="produtos1">PRODUTOS</div>
-            <div class="envie-fotos-de-container">
-              <span class="envie-fotos-para-container1">
-                <span>Envie fotos de seus produtos e crie </span>
-                <b>Headlines</b>
-                <span>, </span>
-                <b>Descrições</b>
-                <span> para seu </span>
-                <b>ecommerce</b>
-              </span>
-            </div>
-          </div>
-          <div class="btn8">
-            <div class="btn-child4"></div>
-            <div class="content">
-              <img class="arrow-icon" alt="" src="./public/arrow.svg" />
-
-              <b class="criar">CRIAR</b>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <script>
-        const imageInput = document.getElementById('imageInput');
-        const imageDiv = document.getElementById('image-output');
 
-        imageInput.addEventListener('change', function () {
-            const file = imageInput.files[0]; // Pega o primeiro arquivo selecionado (você pode tratar múltiplos arquivos se necessário)
+    <div id="service">
 
-            if (file) {
-                const reader = new FileReader();
+        <div id="service-one" class="item-service">
+            <div class="service-content">
+                <div class="left">
+                    <h1 class="service-title">
+                        PRODUTOS
+                    </h1>
+                    <form name="product" enctype="multipart/form-data" id="imageUploadForm_product">
+                    <div class="box">
+                        <div class="input">
+                            <div id="input-content">
+                                <div id="inter-box">
+                                    <div class="dashed">
+                                        <div id="input-bg">
+                                            <input name="image" id="imageInput" type="file" style="height: 100%; width: 100%; opacity: 0;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="input-btns">
+                                    <button id="reset" class="btn">
+                                        <a href="#"></a>
+                                    </button>
+                                    <button id="send" class="btn" type="submit">
+                                        <a href="#"></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="options select">
+                            <div id="content-prod" class="content">
+                                <div class="top">
+                                    <button id="1" class="op">
+                                        <a href="#">ESTÉTICA</a>
+                                    </button>
+                                    <button id="2" class="op">
+                                        <a href="#">DARK</a>
+                                    </button>
+                                    <button id="3" class="op">
+                                        <a href="#">CONCEITUAL</a>
+                                    </button>
+                                </div>
+                                <div class="bottom">
+                                    <button id="4" class="op">
+                                        <a href="#">PENSATIVA</a>
+                                    </button>
+                                    <button id="5" class="op">
+                                        <a href="#">CHAMATIVA</a>
+                                    </button>
+                                    <button id="6" class="op">
+                                        <a href="#">ENGRAÇADA</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="image-output"></div>
+                <div id="descricao"></div>
+                <div id="headline"></div>
+                <div id="text-output"></div>
+                </form>
+                <div class="right">
+                    <div id="insta-mockup" class="mockup">
+                        <img src="./assets/img/services/mockups/product_mockup.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div id="service-two" class="item-service">
+            <div class="service-content">
+                <div class="left">
+                    <h1 class="service-title">
+                        LIVROS
+                    </h1>
+                    <form name="product" enctype="multipart/form-data" id="imageUploadForm_book">
+                    <div class="box">
+                        <div class="input">
+                            <div id="input-content">
+                                <div id="inter-box">
+                                    <div class="dashed">
+                                        <div id="input-bg">
+                                            <input name="image" id="imageInput" type="file" style="height: 100%; width: 100%; opacity: 0;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="input-btns">
+                                    <button id="reset" class="btn">
+                                        <a href="#"></a>
+                                    </button>
+                                    <button id="send" class="btn" type="submit">
+                                        <a href="/"></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="image-output" style="display: none;"></div>
+                        <div id="text-output"></div>
+                        </form>
+                        <div class="options">
 
-                // O evento 'load' será acionado quando a leitura do arquivo estiver concluída
-                const imageElement = document.createElement('img');
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div id="insta-mockup" class="mockup">
+                        <img src="./assets/img/services/mockups/book_mockup.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div> -->
 
-                reader.addEventListener('load', function () {
-                    imageElement.src = reader.result;
-                });
-                imageElement.id='image_output_id'
-                imageDiv.innerHTML = '';
-                imageDiv.appendChild(imageElement);
+        <!-- <div id="service-three" class="item-service">
+            <div class="service-content">
+                <div class="left">
+                    <h1 class="service-title">
+                        INSTAGRAM
+                    </h1>
+                    <form name="insta" enctype="multipart/form-data" id="imageUploadForm_insta">
+                    <div class="box">
+                        <div class="input">
+                            <div id="input-content">
+                                <div id="inter-box">
+                                    <div class="dashed">
+                                        <div id="input-bg">
+                                            <input name="image" type="file" style="height: 100%; width: 100%; opacity: 0;" id="imageInput">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="input-btns">
+                                    <button id="reset" class="btn">
+                                        <a href="#"></a>
+                                    </button>
+                                    <button id="send" class="btn" type="submit">
+                                        <a href="#"></a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="content-insta" class="options select">
+                            <div class="content">
+                                <div class="top">
+                                    <button id="1" class="op">
+                                        <a href="#">ESTÉTICA</a>
+                                    </button>
+                                    <button id="2" class="op">
+                                        <a href="#">DARK</a>
+                                    </button>
+                                    <button id="3" class="op">
+                                        <a href="#">CONCEITUAL</a>
+                                    </button>
+                                </div>
+                                <div class="bottom">
+                                    <button id="4" class="op">
+                                        <a href="#">PENSATIVA</a>
+                                    </button>
+                                    <button id="5" class="op">
+                                        <a href="#">CHAMATIVA</a>
+                                    </button>
+                                    <button id="6" class="op">
+                                        <a href="#">ENGRAÇADA</a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="image-output"></div>
+                <div id="text-output"></div>
+                </form>
+                <div class="right">
+                    <div id="insta-mockup" class="mockup">
+                        <img src="./assets/img/services/mockups/instagram_mockup.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div> -->
+</body>
+<script src="./assets/js/script.js"></script>
+<script src="./assets/js/service-script.js"></script>
+<script src="./assets/js/insta.js"></script>
 
-                // Lê o arquivo como uma URL de dados
-                reader.readAsDataURL(file);
-            }
-        });
-
-        const form = document.getElementById('imageUploadForm');
-
-        form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            uploadAndDisplayImage("insta"); // Chame a função quando o botão de submit for clicado
-        });
-
-    </script>
-  </body>
 </html>
