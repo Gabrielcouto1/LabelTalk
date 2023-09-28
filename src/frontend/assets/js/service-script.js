@@ -88,3 +88,38 @@ function scrollSmoothly(destiny) {
         scroll();
     });
 }
+
+// Input file
+const inputFile = document.querySelector('#image-input');
+const pictureImage = document.querySelector('#input-bg');
+const pictureText = "Choose an image";
+
+// pictureImage.innerHTML = pictureText;
+
+inputFile.addEventListener('change', function (e) {
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
+
+    if (file) {
+        console.log(file);
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function(e){
+            const readerTarget = e.target;
+
+            const img = document.createElement('img');
+            img.src = readerTarget.result;
+            img.classList.add('picture');
+
+            pictureImage.innerHTML = '';
+
+            pictureImage.appendChild(img);
+
+            
+        });
+
+        reader.readAsDataURL(file);
+    } else{
+        pictureImage.innerHTML = pictureText
+    }
+})

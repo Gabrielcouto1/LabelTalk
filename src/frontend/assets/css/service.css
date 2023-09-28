@@ -153,11 +153,21 @@
 
     filter: none;
     transition: all ease-in-out 300ms;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #service .item-service .service-content .left .box .input #input-content #inter-box .dashed #input-bg:hover {
     filter: drop-shadow(2px 2px 10px rgb(130, 128, 128)) invert(50%);
+    cursor: pointer;
+}
 
+#service .item-service .service-content .left .box .input #input-content #inter-box .dashed #input-bg .picture {
+    max-width: 100%;
+    max-height: 100%;
+    aspect-ratio: 12/9;
 }
 
 /* INPUT-BUTTONS */
@@ -271,13 +281,13 @@
 
     /* max-width: 13.759%; */
     height: inherit;
-    width: inherit;   
+    width: inherit;
 
     transition: all ease-in-out 300ms;
 }
 
-#service .item-service .service-content .left .box .options.select .content .op a:hover{
-    color:rgb(36, 36, 36);
+#service .item-service .service-content .left .box .options.select .content .op a:hover {
+    color: rgb(36, 36, 36);
 }
 
 /* INSTAGRAM */
@@ -289,10 +299,12 @@
     color: white;
 }
 
+#service .item-service .service-content .left .box .options.select #content-insta .op:active {}
+
 
 /* PROD */
-#service .item-service .service-content .left .box .options.select #content-prod .op:hover{
-    color:#c36106;
+#service .item-service .service-content .left .box .options.select #content-prod .op:hover {
+    color: #c36106;
     box-shadow: 2px 2px 0px 2px #c36106;
     cursor: pointer;
     background-color: #ff7b007a;
@@ -302,7 +314,7 @@
 
 
 /* RIGHT */
-#service .item-service .service-content .right{
+#service .item-service .service-content .right {
     height: 93.75vh;
     width: 44.444vw;
 
@@ -318,7 +330,7 @@
 }
 
 /* INSTA */
-#service .item-service .service-content .right #insta-mockup{
+#service .item-service .service-content .right #insta-mockup {
     width: auto;
     height: 100%;
 
@@ -327,7 +339,7 @@
     justify-content: center;
 }
 
-#service .item-service .service-content .right #insta-mockup img{
+#service .item-service .service-content .right #insta-mockup img {
     height: 89.160vh;
     width: 21.3333vw;
 
@@ -335,8 +347,10 @@
     align-items: center;
     justify-content: center;
 }
-#image_output_id{
+
+#image_output_id {
     height: 415px;
     width: 415px;
 }
+
 /* PROD */

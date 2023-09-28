@@ -106,7 +106,7 @@ function post(image_name, adjective, type){
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 //setando event listeners e elementos do html
 
-const imageInput = document.getElementById('imageInput');
+const imageInput = document.getElementById('image-input');
 const imageDiv = document.getElementById('image-output');
 
 imageInput.addEventListener('change', function () {
@@ -145,7 +145,7 @@ form_product.addEventListener('submit', async (e) => {
 
 
 //FORM DO INSTA-----------------------------------------------------------------------------------------------------------------------------------------------
-// const form_insta = document.getElementById('imageUploadForm_insta');
+const form_insta = document.getElementById('imageUploadForm_insta');
 
 // form_insta.addEventListener('submit', async (e) => {
 //     e.preventDefault();
