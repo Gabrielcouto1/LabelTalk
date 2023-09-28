@@ -260,3 +260,7 @@
     transition: all ease-in-out 300ms;
     animation: 'fadeIn 2s linear'
 }
+
+.op:disabled{
+    opacity: 50%;
+}

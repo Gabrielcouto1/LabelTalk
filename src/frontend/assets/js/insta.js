@@ -176,5 +176,10 @@ for (let i = 0; i < adjetivos_buttons.length; i++) {
     element.addEventListener("click", function() {
         adjetivo = adjetivos_value[i];
         console.log(adjetivo);
+        element.disabled=true;
+        for(let j = 0; j<adjetivos_buttons.length;j++){
+            if(j!=i)
+                adjetivos_buttons[j].disabled=false;
+        }
     });
 }
