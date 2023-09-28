@@ -3,10 +3,28 @@ let adjetivo = "Estética";
 
 function uploadAndDisplayImage(type) {
     const resultDiv = document.getElementById('text-output');
-
     resultDiv.innerHTML = empty_chars + "Gerando legenda ...";
-
     const form = document.getElementById(`imageUploadForm_${type}`);
+
+    if(type=="book_title"){
+        const formData = {
+            "book_title": form.querySelector('input[name="title"]').value
+        };
+        console.log(formData);
+
+        fetch("https://24hj51kpaf.execute-api.us-east-1.amazonaws.com/book_title", {
+            method: "POST",
+            headers: {'content-type': 'application/json',
+                      'Access-Control-Allow-Origin': '*',
+                     },
+            body: JSON.stringify(form),
+        })
+        .then(response=>response.json())
+        .then(data=>{
+            console.log(data);
+            document.getElementById('text-output').innerText = data.GPT_response
+        })
+    }
 
     const fileInput = form.querySelector('input[name="image"]').files[0];
     const reader = new FileReader();
@@ -143,6 +161,12 @@ form_product.addEventListener('submit', async (e) => {
 //     uploadAndDisplayImage("book"); // Chame a função quando o botão de submit for clicado
 // });
 
+// const form_book_title = document.getElementById('imageUploadForm_book_title');
+
+// form_book.addEventListener('submit', async (e) => {
+//     e.preventDefault();
+//     uploadAndDisplayImage("book_title"); // Chame a função quando o botão de submit for clicado
+// });
 
 
 //COMENTAR ISSO QUANDO ATIVAR A DIV DE BOOK
