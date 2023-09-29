@@ -5,6 +5,8 @@ const item1 = document.getElementById("service-one");
 const item2 = document.getElementById("service-two");
 const item3 = document.getElementById("service-three");
 
+const pictureText = "";
+
 // Create new div
 btn.forEach(function (btn) {
     btn.addEventListener("click", function () {
@@ -89,14 +91,11 @@ function scrollSmoothly(destiny) {
     });
 }
 
-// Input file
-const inputFile = document.querySelector('#image-input');
-const pictureImage = document.querySelector('#input-bg');
-const pictureText = "Choose an image";
+// PROD Input file
+const inputFileProd = document.querySelector('#image-input-prod');
+const pictureImageProd = document.querySelector('#input-bg-prod');
 
-// pictureImage.innerHTML = pictureText;
-
-inputFile.addEventListener('change', function (e) {
+inputFileProd.addEventListener('change', function (e) {
     const inputTarget = e.target;
     const file = inputTarget.files[0];
 
@@ -111,15 +110,47 @@ inputFile.addEventListener('change', function (e) {
             img.src = readerTarget.result;
             img.classList.add('picture');
 
-            pictureImage.innerHTML = '';
+            pictureImageProd.innerHTML = '';
 
-            pictureImage.appendChild(img);
+            pictureImageProd.appendChild(img);
 
             
         });
 
         reader.readAsDataURL(file);
     } else{
-        pictureImage.innerHTML = pictureText
+        pictureImageProd.innerHTML = pictureText
     }
-})
+});
+
+// Insta Input file
+const inputFileInsta = document.querySelector('#image-input-insta');
+const pictureImageInsta = document.querySelector('#input-bg-insta');
+
+inputFileInsta.addEventListener('change', function (e) {
+    const inputTarget = e.target;
+    const file = inputTarget.files[0];
+
+    if (file) {
+        console.log(file);
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function(e){
+            const readerTarget = e.target;
+
+            const img = document.createElement('img');
+            img.src = readerTarget.result;
+            img.classList.add('picture');
+
+            pictureImageInsta.innerHTML = '';
+
+            pictureImageInsta.appendChild(img);
+
+            
+        });
+
+        reader.readAsDataURL(file);
+    } else{
+        pictureImageInsta.innerHTML = pictureText
+    }
+});

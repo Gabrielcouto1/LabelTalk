@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>LabelTalks</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/service.css">
 
@@ -93,12 +93,13 @@
                                 <div id="input-content">
                                     <div id="inter-box">
                                         <div class="dashed">
-                                            <label for="image-input" id="input-bg">
+                                            <label for="image-input-prod" class="input-bg" id="input-bg-prod">
                                             </label>
                                         </div>
                                     </div>
 
-                                    <input type="file" accept="image/*" id="image-input" name="image" style="display: none;">
+                                    <input type="file" accept="image/*" id="image-input-prod" class="imageInput" name="image"
+                                        style="display: none;">
 
                                     <div id="input-btns">
                                         <button id="reset" class="btn">
@@ -111,49 +112,53 @@
                                 </div>
                             </div>
 
-
                             <div class="options select">
                                 <div id="content-prod" class="content">
                                     <div class="top">
-                                        <button id="1" class="op">
-                                            <a href="">ESTÉTICA</a>
+                                        <button id="1-prod" class="estetica op">
+                                            <a>ESTÉTICA</a>
                                         </button>
-                                        <button id="2" class="op">
-                                            <a href="">DARK</a>
+                                        <button id="2-prod" class="dark op">
+                                            <a>DARK</a>
                                         </button>
-                                        <button id="3" class="op">
-                                            <a href="">CONCEITUAL</a>
+                                        <button id="3-prod" class="conceitual op">
+                                            <a>CONCEITUAL</a>
                                         </button>
                                     </div>
                                     <div class="bottom">
-                                        <button id="4" class="op">
-                                            <a href="">PENSATIVA</a>
+                                        <button id="4-prod" class="pensativa op">
+                                            <a>PENSATIVA</a>
                                         </button>
-                                        <button id="5" class="op">
-                                            <a href="">CHAMATIVA</a>
+                                        <button id="5-prod" class="chamativa op">
+                                            <a>CHAMATIVA</a>
                                         </button>
-                                        <button id="6" class="op">
-                                            <a href="">ENGRAÇADA</a>
+                                        <button id="6-prod" class="engracada op">
+                                            <a>ENGRAÇADA</a>
                                         </button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                 </div>
-                <div id="image-output"></div>
-                <div id="descricao"></div>
-                <div id="headline"></div>
-                <div id="text-output"></div>
                 </form>
                 <div class="right">
-                    <div id="insta-mockup" class="mockup">
-                        <img src="./assets/img/services/mockups/product_mockup.png" alt="">
+                    <div id="product-mockup" class="mockup">
+                        <img src="./assets/img/services/mockups/product_mockup.png" id="image-mockup">
+                        <div id="image-example">
+                            <div id="image-output-product" class="image-output">
+                            </div>
+                        </div>
+                        <div id="text-example-product" class="text-example">
+                            <div id="text-output-product">
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
 
-        <!-- <div id="service-two" class="item-service">
+        <div id="service-two" class="item-service">
             <div class="service-content">
                 <div class="left">
                     <h1 class="service-title">
@@ -180,8 +185,8 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="image-output" style="display: none;"></div>
-                        <div id="text-output"></div>
+                        <div class="image-output" style="display: none;"></div>
+                        <div id="text-output-book"></div>
                         </form>
                         <form name="book-title" enctype="multipart/form-data" id="imageUploadForm_book_title">
                             <input type="text" name="title" id="title_input">
@@ -200,76 +205,86 @@
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
 
-        <!-- <div id="service-three" class="item-service">
+        <div id="service-three" class="item-service">
             <div class="service-content">
                 <div class="left">
                     <h1 class="service-title">
                         INSTAGRAM
                     </h1>
                     <form name="insta" enctype="multipart/form-data" id="imageUploadForm_insta">
-                    <div class="box">
-                        <div class="input">
-                            <div id="input-content">
-                                <div id="inter-box">
-                                    <div class="dashed">
-                                        <div id="input-bg">
-                                            <input name="image" type="file" style="height: 100%; width: 100%; opacity: 0;" id="imageInput">
+                        <div class="box">
+                            <div class="input">
+                                <div id="input-content">
+                                    <div id="inter-box">
+                                        <div class="dashed">
+                                            <label for="image-input-insta" class="input-bg" id="input-bg-insta">
+                                            </label>
                                         </div>
                                     </div>
+
+                                    <input type="file" accept="image/*" id="image-input-insta" class="imageInput" name="image"
+                                        style="display: none;">
+
+                                    <div id="input-btns">
+                                        <button id="reset" class="btn">
+                                            <a href="#"></a>
+                                        </button>
+                                        <button id="send" class="btn" type="submit">
+                                            <a href="#"></a>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div id="input-btns">
-                                    <button id="reset" class="btn">
-                                        <a href="#"></a>
-                                    </button>
-                                    <button id="send" class="btn" type="submit">
-                                        <a href="#"></a>
-                                    </button>
+                            </div>
+
+                            <div class="options select">
+                                <div id="content-insta" class="content">
+                                    <div class="top">
+                                        <button id="1-insta" class="estetica op">
+                                            <a>ESTÉTICA</a>
+                                        </button>
+                                        <button id="2-insta" class="dark op">
+                                            <a>DARK</a>
+                                        </button>
+                                        <button id="3-insta" class="conceitual op">
+                                            <a>CONCEITUAL</a>
+                                        </button>
+                                    </div>
+                                    <div class="bottom">
+                                        <button id="4-insta" class="pensativa op">
+                                            <a>PENSATIVA</a>
+                                        </button>
+                                        <button id="5-insta" class="chamativa op">
+                                            <a>CHAMATIVA</a>
+                                        </button>
+                                        <button id="6-insta" class="engracada op">
+                                            <a>ENGRAÇADA</a>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div id="content-insta" class="options select">
-                            <div class="content">
-                                <div class="top">
-                                    <button id="1" class="op">
-                                        <a >ESTÉTICA</a>
-                                    </button>
-                                    <button id="2" class="op">
-                                        <a >DARK</a>
-                                    </button>
-                                    <button id="3" class="op">
-                                        <a >CONCEITUAL</a>
-                                    </button>
-                                </div>
-                                <div class="bottom">
-                                    <button id="4" class="op">
-                                        <a >PENSATIVA</a>
-                                    </button>
-                                    <button id="5" class="op">
-                                        <a >CHAMATIVA</a>
-                                    </button>
-                                    <button id="6" class="op">
-                                        <a >ENGRAÇADA</a>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div id="image-output"></div>
-                <div id="text-output"></div>
                 </form>
                 <div class="right">
-                    <div id="insta-mockup" class="mockup">
-                        <img src="./assets/img/services/mockups/instagram_mockup.png" alt="">
+                    <div id="instagram-mockup" class="mockup">
+                        <img id="image-mockup" src="./assets/img/services/mockups/instagram_mockup.png">
+                        <div id="image-example">
+                            <div id="image-output-instagram" class="image-output">
+                            </div>
+                        </div>
+                        <div id="text-example-instagram" class="text-example">
+                            <div id="text-output-insta" class="text_output_class">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
+        </div>
+
 </body>
 <script src="./assets/js/script.js"></script>
 <script src="./assets/js/service-script.js"></script>
 <script src="./assets/js/insta.js"></script>
-
 </html>
